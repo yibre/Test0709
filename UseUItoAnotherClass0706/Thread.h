@@ -11,7 +11,7 @@ public:
     explicit Thread(QObject *parent = nullptr);
     void comPlatform(); // <- get과 set이 있음
     bool Stop;
-
+    void run();
     //DataContainer -> get set
     // 쓰레드 자체의 함수 get set
 

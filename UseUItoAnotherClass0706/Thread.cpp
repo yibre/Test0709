@@ -16,6 +16,11 @@ Thread::Thread(QObject *parent) :
 
 }
 
+void Thread::run()
+{
+    comPlatform();
+}
+
 void Thread::comPlatform()
 {
     CComPlatform _serial(dataContainer);
