@@ -105,9 +105,11 @@ bool CSerialPort::WriteByte(BYTE bybyte)
 
 bool CSerialPort::ReadByte(BYTE &resp)
 {
+	cout << "readbyte" << endl;
     BYTE rx;
     resp = 0;
 
+	
     DWORD dwBytesTransferred = 0;
 
     if (ReadFile(m_hComm, &rx, 1, &dwBytesTransferred, 0))

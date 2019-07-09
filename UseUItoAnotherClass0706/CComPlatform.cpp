@@ -21,10 +21,12 @@ CComPlatform::~CComPlatform()
 
 void CComPlatform::MyCommRead()
 {
+
     BYTE* pByte = new BYTE[36];
     // 읽는데 성공하면 처리하고  
     if (ReadByte(pByte, 36))
     {
+		
         int indx = 0;
         for (; indx < 36; indx++)
         {
@@ -34,9 +36,13 @@ void CComPlatform::MyCommRead()
             }
         }
 
+		cout << "Read byte Step 1" << endl;
+
         dataContainer->setValue_PtoU_AorM(pByte[indx + 3]);
         dataContainer->setValue_PtoU_E_STOP(pByte[indx + 4]);
         dataContainer->setValue_PtoU_GEAR(pByte[indx + 5]);
+
+		cout << "Something doesn't work " << endl;
 
         int speed_now = 0;
         speed_now |= (int)((pByte[indx + 6]) & 0xff);
@@ -60,6 +66,10 @@ void CComPlatform::MyCommRead()
         dataContainer->setValue_PtoU_ALIVE(pByte[indx + 15]);
 
     }
+	else {
+		cout << "READERR\n";
+
+	}
 
     delete pByte;
 }

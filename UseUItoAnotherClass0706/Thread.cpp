@@ -13,23 +13,24 @@ bool loopStatus = true;
 Thread::Thread(QObject *parent) :
     QThread(parent)
 {
-
+	//comPlatform();
 }
 
-void Thread::comPlatform()
+
+void Thread::comPlatform() 
 {
     CComPlatform _serial(dataContainer);
-    if (_serial.OpenPort(L"COM4"))  
+    if (_serial.OpenPort(L"COM1"))  
     { 
         _serial.ConfigurePort(CBR_115200, 8, FALSE, NOPARITY, ONESTOPBIT);
         _serial.SetCommunicationTimeouts(0, 0, 0, 0, 0);
-
+		cout << "Thread is running";
         while (loopStatus)
         {
             _serial.MyCommRead();
             _serial.MyCommWrite();
             // DataContainer.get -> º¤ÅÍ¿¡ ½×°í
-            {
+			cout << "MyCommread and MyCommWrite Success";
                 emit(AorMChanged(dataContainer->getValue_PtoU_AorM()));
                 emit(EStopChanged(dataContainer->getValue_PtoU_E_STOP()));
                 emit(SpeedChanged(dataContainer->getValue_PtoU_SPEED()));
@@ -37,8 +38,7 @@ void Thread::comPlatform()
                 emit(GearChanged(dataContainer->getValue_PtoU_BREAK()));
                 emit(BreakChanged(dataContainer->getValue_PtoU_BREAK()));
                 emit(EncChanged(dataContainer->getValue_PtoU_ENC()));
-                emit(AliveChanged(dataContainer->getValue_UtoP_ALIVE()));
-            }
+
             //this_thread::sleep_for(100ms);
             this->msleep(100);
         }
@@ -48,4 +48,9 @@ void Thread::comPlatform()
         cout << "not connected" << endl;
     }
 
+}
+
+void Thread::run() {
+	cout << "running" << endl;
+	comPlatform();
 }
