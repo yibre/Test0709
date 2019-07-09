@@ -9,6 +9,7 @@ class Thread : // Communicate with platform thread
 
 public:
     explicit Thread(QObject *parent = nullptr);
+	void run();
     void comPlatform(); // <- get과 set이 있음
     bool Stop;
     void run();

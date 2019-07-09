@@ -1,6 +1,7 @@
 #pragma once
 #include <QMutex>
 #include "Thread.h"
+#include <mutex>
 
 class CDataContainer
 {
@@ -46,22 +47,22 @@ private:
 
 
     // std::mutex 용 저장공간
-    QMutex mtx_UtoP_AorM;
-    QMutex mtx_UtoP_E_STOP;
-    QMutex mtx_UtoP_GEAR;
-    QMutex mtx_UtoP_SPEED;
-    QMutex mtx_UtoP_STEER;
-    QMutex mtx_UtoP_BREAK;
-    QMutex mtx_UtoP_ALIVE;
+    std::mutex mtx_UtoP_AorM;
+    std::mutex mtx_UtoP_E_STOP;
+	std::mutex mtx_UtoP_GEAR;
+	std::mutex mtx_UtoP_SPEED;
+	std::mutex mtx_UtoP_STEER;
+	std::mutex mtx_UtoP_BREAK;
+	std::mutex mtx_UtoP_ALIVE;
 
-    QMutex mtx_PtoU_AorM;
-    QMutex mtx_PtoU_E_STOP;
-    QMutex mtx_PtoU_GEAR;
-    QMutex mtx_PtoU_SPEED;
-    QMutex mtx_PtoU_STEER;
-    QMutex mtx_PtoU_BREAK;
-    QMutex mtx_PtoU_ENC;
-    QMutex mtx_PtoU_ALIVE;
+	std::mutex mtx_PtoU_AorM;
+	std::mutex mtx_PtoU_E_STOP;
+	std::mutex mtx_PtoU_GEAR;
+	std::mutex mtx_PtoU_SPEED;
+	std::mutex mtx_PtoU_STEER;
+	std::mutex mtx_PtoU_BREAK;
+	std::mutex mtx_PtoU_ENC;
+	std::mutex mtx_PtoU_ALIVE;
 
 public:
 

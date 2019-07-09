@@ -8,6 +8,8 @@ UseUItoAnotherClass::UseUItoAnotherClass(QWidget *parent)
     ui.setupUi(this);
 
     platformComThread = new Thread(this);
+	platformComThread->start();
+	//platformComThread(&comPlatform)
     connect(platformComThread, SIGNAL(AorMChanged(int)), this, SLOT(onAorMChanged(int)));
     connect(platformComThread, SIGNAL(EStopChanged(int)), this, SLOT(onEStopChanged(int)));
     connect(platformComThread, SIGNAL(GearChanged(int)), this, SLOT(onGearChanged(int)));
