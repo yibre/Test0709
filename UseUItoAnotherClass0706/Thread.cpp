@@ -10,15 +10,16 @@ CDataContainer *dataContainer;
 
 bool loopStatus = true;
 
-Thread::Thread(QObject *parent) :
-    QThread(parent)
-{
-	//comPlatform();
-}
+//Thread::Thread (QObject *parent) :
+//    QThread(parent)
+//{
+//	//comPlatform();
+//}
 
 
 void Thread::comPlatform() 
 {
+	dataContainer = CDataContainer::getInstance();
     CComPlatform _serial(dataContainer);
     if (_serial.OpenPort(L"COM1"))  
     { 
@@ -30,12 +31,11 @@ void Thread::comPlatform()
             _serial.MyCommRead();
             _serial.MyCommWrite();
             // DataContainer.get -> ╨╓ем©║ ╫в╟М
-			cout << "MyCommread and MyCommWrite Success";
                 emit(AorMChanged(dataContainer->getValue_PtoU_AorM()));
                 emit(EStopChanged(dataContainer->getValue_PtoU_E_STOP()));
                 emit(SpeedChanged(dataContainer->getValue_PtoU_SPEED()));
                 emit(SteerChanged(dataContainer->getValue_PtoU_STEER()));
-                emit(GearChanged(dataContainer->getValue_PtoU_BREAK()));
+                emit(GearChanged(dataContainer->getValue_PtoU_GEAR()));
                 emit(BreakChanged(dataContainer->getValue_PtoU_BREAK()));
                 emit(EncChanged(dataContainer->getValue_PtoU_ENC()));
 

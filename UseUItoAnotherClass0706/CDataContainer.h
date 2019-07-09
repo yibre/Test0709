@@ -27,12 +27,12 @@ private:
     //////////////////////////////
 
     //UPPER to PCU (플랫폼에 보내는 값)
-    int m_UtoP_AorM = 0;
+    int m_UtoP_AorM = 1;
     int m_UtoP_E_STOP = 0;
     int m_UtoP_GEAR = 0;
     int m_UtoP_SPEED = 0;
     int m_UtoP_STEER = 0;
-    int m_UtoP_BREAK = 0;
+    int m_UtoP_BREAK = 1;
     int m_UtoP_ALIVE = 0;
 
     //PCU to UPPER (플랫폼에서 받아오는 값)
@@ -41,28 +41,28 @@ private:
     int m_PtoU_GEAR = 0;
     int m_PtoU_SPEED = 0;
     int m_PtoU_STEER = 0;
-    int m_PtoU_BREAK = 0;
+    int m_PtoU_BREAK = 1;
     int m_PtoU_ENC = 0;
     int m_PtoU_ALIVE = 0;
 
 
     // std::mutex 용 저장공간
-    std::mutex mtx_UtoP_AorM;
-    std::mutex mtx_UtoP_E_STOP;
-	std::mutex mtx_UtoP_GEAR;
-	std::mutex mtx_UtoP_SPEED;
-	std::mutex mtx_UtoP_STEER;
-	std::mutex mtx_UtoP_BREAK;
-	std::mutex mtx_UtoP_ALIVE;
+    QMutex mtx_UtoP_AorM;
+    QMutex mtx_UtoP_E_STOP;
+	QMutex mtx_UtoP_GEAR;
+	QMutex mtx_UtoP_SPEED;
+	QMutex mtx_UtoP_STEER;
+	QMutex mtx_UtoP_BREAK;
+	QMutex mtx_UtoP_ALIVE;
 
-	std::mutex mtx_PtoU_AorM;
-	std::mutex mtx_PtoU_E_STOP;
-	std::mutex mtx_PtoU_GEAR;
-	std::mutex mtx_PtoU_SPEED;
-	std::mutex mtx_PtoU_STEER;
-	std::mutex mtx_PtoU_BREAK;
-	std::mutex mtx_PtoU_ENC;
-	std::mutex mtx_PtoU_ALIVE;
+	QMutex mtx_PtoU_AorM;
+	QMutex mtx_PtoU_E_STOP;
+	QMutex mtx_PtoU_GEAR;
+	QMutex mtx_PtoU_SPEED;
+	QMutex mtx_PtoU_STEER;
+	QMutex mtx_PtoU_BREAK;
+	QMutex mtx_PtoU_ENC;
+	QMutex mtx_PtoU_ALIVE;
 
 public:
 
