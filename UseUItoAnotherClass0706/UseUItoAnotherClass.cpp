@@ -6,9 +6,12 @@ UseUItoAnotherClass::UseUItoAnotherClass(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-
-    platformComThread = new Thread(this);
+	dataContainer = CDataContainer::getInstance();
+    //platformComThread = new Thread(this);
+	Thread *platformComThread = new Thread;
 	platformComThread->start();
+	std::cout << "여기가 문젠가" << std::endl;
+
 	//platformComThread(&comPlatform)
     connect(platformComThread, SIGNAL(AorMChanged(int)), this, SLOT(onAorMChanged(int)));
     connect(platformComThread, SIGNAL(EStopChanged(int)), this, SLOT(onEStopChanged(int)));
@@ -18,12 +21,15 @@ UseUItoAnotherClass::UseUItoAnotherClass(QWidget *parent)
     connect(platformComThread, SIGNAL(BreakChanged(int)), this, SLOT(onBreakChanged(int)));
     connect(platformComThread, SIGNAL(EncChanged(int)), this, SLOT(onEncChanged(int)));
     QObject::connect(ui.pushButton_6, SIGNAL(clicked()), this, SLOT(select_gear_clicked()));
-    //QObject::connect(ui.push)
+	QObject::connect(ui.pushButton_3, SIGNAL(clicked()), this, SLOT(show_status()));
+	QObject::connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(go_forward()));
+
+	//QObject::connect(ui.push)
 
     ui.comboBox->addItem("front");
     ui.comboBox->addItem("back");
 
-    dataContainer = CDataContainer::getInstance();
+    
 }
 
 void UseUItoAnotherClass::onAorMChanged(int Number)
@@ -69,6 +75,15 @@ void UseUItoAnotherClass::select_gear_clicked()
     else { dataContainer->setValue_UtoP_GEAR(2); }
     int temp = dataContainer->getValue_UtoP_GEAR();
     std::cout << temp << std::endl;
+}
+
+void UseUItoAnotherClass::show_status() {
+	dataContainer->show_PtoU();
+	dataContainer->show_UtoP();
+}
+
+void UseUItoAnotherClass::go_forward() {
+	dataContainer->setValue_UtoP_SPEED(dataContainer->getValue_UtoP_SPEED() + 1);
 }
 
 /*

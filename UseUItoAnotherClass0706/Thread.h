@@ -1,6 +1,7 @@
 #pragma once
 #include <QThread>
 #include <CDataContainer.h>
+#include <QtCore>
 
 class Thread : // Communicate with platform thread
     public QThread
@@ -8,7 +9,7 @@ class Thread : // Communicate with platform thread
     Q_OBJECT;
 
 public:
-    explicit Thread(QObject *parent = nullptr);
+	// explicit Thread (QObject *parent = nullptr);
 	void run();
     void comPlatform(); // <- get과 set이 있음
     bool Stop;

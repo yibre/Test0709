@@ -22,11 +22,14 @@ public slots:
     void onBreakChanged(int);
     void onSteerChanged(int);
     void onEncChanged(int);
+
     /// absorb signal form Thread
 
 private slots: /// 버튼 클릭 함수
     //void on_Estop_clicked();
     void select_gear_clicked();
+	void show_status();
+	void go_forward();
     //void Onclicked();
 
 private:

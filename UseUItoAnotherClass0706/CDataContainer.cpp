@@ -64,7 +64,7 @@ void CDataContainer::setValue_PtoU_ALIVE(int value) { m_PtoU_ALIVE = value; }
 
 //UPPER to PCU (ÇÃ·§Æû¿¡ º¸³»´Â °ª)
 int CDataContainer::getValue_UtoP_AorM() { 
-    mtx_UtoP_AorM.lock(); 
+    mtx_UtoP_AorM.lock();
     int temp = m_UtoP_AorM;
     mtx_UtoP_AorM.unlock(); 
     return temp; 
@@ -121,8 +121,8 @@ int CDataContainer::getValue_PtoU_GEAR() { mtx_PtoU_GEAR.lock(); int temp = m_Pt
 int CDataContainer::getValue_PtoU_SPEED() { mtx_PtoU_SPEED.lock(); int temp = m_PtoU_SPEED; mtx_PtoU_SPEED.unlock(); return temp; }
 int CDataContainer::getValue_PtoU_STEER() { mtx_PtoU_STEER.lock(); int temp = m_PtoU_STEER; mtx_PtoU_STEER.unlock(); return temp; }
 int CDataContainer::getValue_PtoU_BREAK() { mtx_PtoU_BREAK.lock(); int temp = m_PtoU_BREAK; mtx_PtoU_BREAK.unlock(); return temp; }
-int CDataContainer::getValue_PtoU_ALIVE() { mtx_PtoU_ENC.lock(); int temp = m_PtoU_ENC; mtx_PtoU_ENC.unlock(); return temp; }
-int CDataContainer::getValue_PtoU_ENC() { mtx_PtoU_ALIVE.lock(); int temp = m_PtoU_ALIVE; mtx_PtoU_ALIVE.unlock(); return temp; }
+int CDataContainer::getValue_PtoU_ENC() { mtx_PtoU_ENC.lock(); int temp = m_PtoU_ENC; mtx_PtoU_ENC.unlock(); return temp; }
+int CDataContainer::getValue_PtoU_ALIVE() { mtx_PtoU_ALIVE.lock(); int temp = m_PtoU_ALIVE; mtx_PtoU_ALIVE.unlock(); return temp; }
 
 void CDataContainer::setValue_PtoU_AorM(int value) { mtx_PtoU_AorM.lock(); m_PtoU_AorM = value; mtx_PtoU_AorM.unlock(); }
 void CDataContainer::setValue_PtoU_E_STOP(int value) { mtx_PtoU_E_STOP.lock(); m_PtoU_E_STOP = value; mtx_PtoU_E_STOP.unlock(); }
