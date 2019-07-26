@@ -13,7 +13,6 @@ public:
 	void run();
     void comPlatform(); // <- get과 set이 있음
     bool Stop;
-    void run();
     //DataContainer -> get set
     // 쓰레드 자체의 함수 get set
 
@@ -26,7 +25,6 @@ signals: // 회면 업데이트
     void BreakChanged(int);
     void EncChanged(int);
     void AliveChanged(int);
-
 
 public slots:
 
